@@ -1,0 +1,263 @@
+# MTG Rules Coverage Tracker
+# Status: todo | partial | done
+# Update this file as rules are implemented
+
+# =============================================================================
+# TURN STRUCTURE (Section 5)
+# =============================================================================
+
+- id: "500"
+  title: "Turn Structure - General"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/phases.py
+  notes: "Phase enum exists but only MAIN is functional"
+
+- id: "505"
+  title: "Main Phase"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/phases.py
+    - src/mtg_engine/engine/game.py
+  notes: "Basic main phase works, no sorcery-speed restrictions yet"
+
+- id: "501-504"
+  title: "Beginning Phase (Untap, Upkeep, Draw)"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "506-511"
+  title: "Combat Phase"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "512-514"
+  title: "Ending Phase (End Step, Cleanup)"
+  status: todo
+  code_refs: []
+  notes: ""
+
+# =============================================================================
+# PRIORITY AND TIMING (Section 1 - Rule 117)
+# =============================================================================
+
+- id: "117"
+  title: "Timing and Priority"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+    - src/mtg_engine/engine/state.py
+  notes: "Basic priority passing works, pass/pass triggers resolution or turn advance"
+
+- id: "117.3-117.4"
+  title: "Priority Pass Rules"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+  notes: "Consecutive pass detection implemented"
+
+# =============================================================================
+# STACK AND RESOLUTION (Section 4 - Rule 405, Section 6)
+# =============================================================================
+
+- id: "405"
+  title: "Stack Zone"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/stack.py
+  notes: "Basic LIFO stack implemented"
+
+- id: "601"
+  title: "Casting Spells"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+  notes: "Simplified spell casting (no mana costs, no targeting)"
+
+- id: "608"
+  title: "Resolving Spells and Abilities"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+  notes: "Basic resolution works for damage-dealing spells"
+
+# =============================================================================
+# ZONES (Section 4)
+# =============================================================================
+
+- id: "400"
+  title: "Zones - General"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "401"
+  title: "Library"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "402"
+  title: "Hand"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "403"
+  title: "Battlefield"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "404"
+  title: "Graveyard"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "406"
+  title: "Exile"
+  status: todo
+  code_refs: []
+  notes: ""
+
+# =============================================================================
+# OBJECTS (Section 1 - Rules 108-113)
+# =============================================================================
+
+- id: "109"
+  title: "Objects"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "110"
+  title: "Permanents"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "112"
+  title: "Spells"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/stack.py
+  notes: "StackItem is a simplified spell representation"
+
+- id: "113"
+  title: "Abilities"
+  status: todo
+  code_refs: []
+  notes: ""
+
+# =============================================================================
+# STATE-BASED ACTIONS (Section 7 - Rule 704)
+# =============================================================================
+
+- id: "704"
+  title: "State-Based Actions"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+  notes: "Only life <= 0 check implemented via is_over()"
+
+- id: "704.5"
+  title: "SBA List"
+  status: todo
+  code_refs: []
+  notes: "Creature death, legend rule, etc. not implemented"
+
+# =============================================================================
+# TRIGGERED ABILITIES (Section 6 - Rule 603)
+# =============================================================================
+
+- id: "603"
+  title: "Handling Triggered Abilities"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "603.3"
+  title: "Trigger Conditions"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "603.4"
+  title: "Putting Triggers on Stack"
+  status: todo
+  code_refs: []
+  notes: ""
+
+# =============================================================================
+# CONTINUOUS EFFECTS AND LAYERS (Section 6 - Rules 611, 613)
+# =============================================================================
+
+- id: "611"
+  title: "Continuous Effects"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "613"
+  title: "Interaction of Continuous Effects (Layers)"
+  status: todo
+  code_refs: []
+  notes: "Layer system not implemented"
+
+- id: "613.1"
+  title: "Layer Order"
+  status: todo
+  code_refs: []
+  notes: ""
+
+# =============================================================================
+# MANA (Section 1 - Rule 106)
+# =============================================================================
+
+- id: "106"
+  title: "Mana"
+  status: todo
+  code_refs: []
+  notes: ""
+
+- id: "106.4"
+  title: "Mana Pool"
+  status: todo
+  code_refs: []
+  notes: ""
+
+# =============================================================================
+# DAMAGE (Section 1 - Rule 120)
+# =============================================================================
+
+- id: "120"
+  title: "Damage"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+  notes: "Only player damage (life reduction) implemented"
+
+# =============================================================================
+# LIFE (Section 1 - Rule 119)
+# =============================================================================
+
+- id: "119"
+  title: "Life"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/state.py
+  notes: "Life totals tracked, damage reduces life"
+
+# =============================================================================
+# ENDING THE GAME (Section 1 - Rule 104)
+# =============================================================================
+
+- id: "104"
+  title: "Ending the Game"
+  status: partial
+  code_refs:
+    - src/mtg_engine/engine/game.py
+  notes: "Win/loss by life total implemented"
